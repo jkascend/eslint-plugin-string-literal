@@ -21,8 +21,6 @@ var ruleTester = new RuleTester();
 ruleTester.run("no-string-literal", rule, {
 
     valid: [
-
-        // give me some code that won't trigger a warning
          {
              code: "const x = 3;",
              parserOptions: {
@@ -47,7 +45,6 @@ ruleTester.run("no-string-literal", rule, {
                 }
             }
         }
-        // "const f = myString => const x = myString; return x;"
     ],
 
     invalid: [

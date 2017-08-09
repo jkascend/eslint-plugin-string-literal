@@ -1,6 +1,6 @@
 # Identifies all string literals. (no-string-literal)
 
-Please describe the origin of the rule here.
+Created because I needed to identify any string literals in my client for localization purposes.
 
 
 ## Rule Details
@@ -26,7 +26,3 @@ const foo = resources.bar;
 ## When Not To Use It
 
 Any time you want to have string literals in your project.
-
-## Further Reading
-
-If there are other links that describe the issue this rule addresses, please include them here in a bulleted list.
