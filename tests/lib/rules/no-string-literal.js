@@ -53,6 +53,9 @@ ruleTester.run("no-string-literal", rule, {
                     jsx: true
                 }
             }
+        },
+        {
+            code: "var foo = ''"
         }
     ],
 
