@@ -69,6 +69,15 @@ ruleTester.run("no-string-literal", rule, {
             parserOptions: {
                 ecmaVersion: 6
             }
+        },
+        {
+            code: "const jsxHtmlWithIdentifier = <input value={bar} />",
+            parserOptions: {
+                ecmaVersion: 6,
+                ecmaFeatures: {
+                    jsx: true
+                }
+            }
         }
     ],
 
@@ -101,6 +110,32 @@ ruleTester.run("no-string-literal", rule, {
             errors: [{
                 message: "Identified template with literal string.",
                 type: "TemplateElement"
+            }]
+        },
+        {
+            code: 'const jsxHtmlWithLitValue = <input value="bar" />;',
+            parserOptions: {
+                ecmaVersion: 6,
+                ecmaFeatures: {
+                    jsx: true
+                }
+            },
+            errors: [{
+                message: "Identified string literal.",
+                type: "Literal"
+            }]
+        },
+        {
+            code: 'const jsxLi = <li value="bar" />;',
+            parserOptions: {
+                ecmaVersion: 6,
+                ecmaFeatures: {
+                    jsx: true
+                }
+            },
+            errors: [{
+                message: "Identified string literal.",
+                type: "Literal"
             }]
         }
     ]
