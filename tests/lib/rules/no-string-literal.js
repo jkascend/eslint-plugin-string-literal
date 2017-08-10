@@ -44,6 +44,15 @@ ruleTester.run("no-string-literal", rule, {
                     jsx: true
                 }
             }
+        },
+        {
+            code: 'const foo = <div className="class-name">{bar}</div>',
+            parserOptions: {
+                ecmaVersion: 6,
+                ecmaFeatures: {
+                    jsx: true
+                }
+            }
         }
     ],
 
