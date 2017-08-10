@@ -63,6 +63,12 @@ ruleTester.run("no-string-literal", rule, {
         },
         {
             code: "var foo = ''"
+        },
+        {
+            code: "const onlyFoo = `${onlyBar}`;",
+            parserOptions: {
+                ecmaVersion: 6
+            }
         }
     ],
 
@@ -85,6 +91,16 @@ ruleTester.run("no-string-literal", rule, {
             errors: [{
                 message: "Identified string literal.",
                 type: "Literal"
+            }]
+        },
+        {
+            code: "const foo = `some literal with ${bar}`;",
+            parserOptions: {
+                ecmaVersion: 6
+            },
+            errors: [{
+                message: "Identified template with literal string.",
+                type: "TemplateElement"
             }]
         }
     ]
