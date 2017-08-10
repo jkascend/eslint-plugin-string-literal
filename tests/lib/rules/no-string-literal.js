@@ -53,6 +53,13 @@ ruleTester.run("no-string-literal", rule, {
                     jsx: true
                 }
             }
+        },
+        {
+            code: 'import packageName from "a-package";',
+            parserOptions: {
+                ecmaVersion: 6,
+                sourceType: "module"
+            }
         }
     ],
 
