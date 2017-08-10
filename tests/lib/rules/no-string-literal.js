@@ -78,6 +78,14 @@ ruleTester.run("no-string-literal", rule, {
                     jsx: true
                 }
             }
+        },
+        {
+            code: "<div>\n    {foo}\n    <div>\n\t\t{bar}\n\t</div>\n</div>",
+            parserOptions: {
+                ecmaFeatures: {
+                    jsx: true
+                }
+            }
         }
     ],
 
@@ -129,6 +137,18 @@ ruleTester.run("no-string-literal", rule, {
             code: 'const jsxLi = <li value="bar" />;',
             parserOptions: {
                 ecmaVersion: 6,
+                ecmaFeatures: {
+                    jsx: true
+                }
+            },
+            errors: [{
+                message: "Identified string literal.",
+                type: "Literal"
+            }]
+        },
+        {
+            code: "<div>\n    foo\n    <div>\n\t\t{bar}\n\t</div>\n</div>",
+            parserOptions: {
                 ecmaFeatures: {
                     jsx: true
                 }
