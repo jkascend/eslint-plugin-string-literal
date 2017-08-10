@@ -60,6 +60,9 @@ ruleTester.run("no-string-literal", rule, {
                 ecmaVersion: 6,
                 sourceType: "module"
             }
+        },
+        {
+            code: "var foo = ''"
         }
     ],
 
