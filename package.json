@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-string-literal",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Identifies string literals.",
   "keywords": [
     "eslint",
