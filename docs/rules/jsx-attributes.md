@@ -1,6 +1,6 @@
 # Identifies provided JSX attributes. (jsx-attributes)
 
-Provided with a set of target JSX attributes, this rule will identify them all.
+Provided with a set of target JSX attributes, this rule will identify all the attributes with a string literal as their value..
 
 
 ## Rule Details
@@ -8,7 +8,7 @@ Provided with a set of target JSX attributes, this rule will identify them all.
 Examples of **incorrect** code for this rule:
 
 ```js
-// where targAttr is a targeted JSX attribute
+// jsx-attributes: [targetJsxAttributes: ["targAttr"]]
 <a targAttr="foo">bar</a>
 
 ```
@@ -16,11 +16,12 @@ Examples of **incorrect** code for this rule:
 Examples of **correct** code for this rule:
 
 ```js
-// where targAttri is not targeted
+// jsx-attributes: [targetJsxAttributes: ["notTarg"]]
 <a targAttr="foo">bar</a>
+<a notTarg={options}>bar</a>
 
 ```
 
 ## When Not To Use It
 
-Any time you are not trying to identify JSX attributes in your code.
+Any time you are not trying to identify specific JSX attributes with string literal values in your code.

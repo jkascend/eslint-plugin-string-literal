@@ -1,6 +1,6 @@
 /**
  * @fileoverview Identifies all string literals.
- * @author no-string-literal
+ * @author Justin Kambic
  */
 "use strict";
 
@@ -10,7 +10,7 @@
 
 var rule = require("../../../lib/rules/no-string-literal"),
 
-    RuleTester = require("eslint").RuleTester;
+RuleTester = require("eslint").RuleTester;
 
 
 //------------------------------------------------------------------------------
