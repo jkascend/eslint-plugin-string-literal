@@ -17,47 +17,35 @@ var rule = require("../../../lib/rules/no-string-literal"),
 // Tests
 //------------------------------------------------------------------------------
 
-var ruleTester = new RuleTester();
+var ruleTester = new RuleTester(
+    {
+        parserOptions: {
+            ecmaVersion: 6,
+            ecmaFeatures: {
+                jsx: true
+            }
+        }
+    }
+);
+
 ruleTester.run("no-string-literal", rule, {
 
     valid: [
-         {
-             code: "const x = 3;",
-             parserOptions: {
-                 ecmaVersion: 6,
-                 jsx: true
-             }
-         },
         {
-            code: "const d = () => <div></div>",
-            parserOptions: {
-                ecmaVersion: 6,
-                ecmaFeatures: {
-                    jsx: true
-                }
-            }
+             code: "const x = 3;"
         },
         {
-            code: "var foo = <div>{bar}</div>",
-            parserOptions: {
-                ecmaFeatures: {
-                    jsx: true
-                }
-            }
+            code: "const d = () => <div></div>"
         },
         {
-            code: 'const foo = <div className="class-name">{bar}</div>',
-            parserOptions: {
-                ecmaVersion: 6,
-                ecmaFeatures: {
-                    jsx: true
-                }
-            }
+            code: "var foo = <div>{bar}</div>"
+        },
+        {
+            code: 'const foo = <div className="class-name">{bar}</div>'
         },
         {
             code: 'import packageName from "a-package";',
             parserOptions: {
-                ecmaVersion: 6,
                 sourceType: "module"
             }
         },
@@ -65,27 +53,13 @@ ruleTester.run("no-string-literal", rule, {
             code: "var foo = ''"
         },
         {
-            code: "const onlyFoo = `${onlyBar}`;",
-            parserOptions: {
-                ecmaVersion: 6
-            }
+            code: "const onlyFoo = `${onlyBar}`;"
         },
         {
-            code: "const jsxHtmlWithIdentifier = <input value={bar} />",
-            parserOptions: {
-                ecmaVersion: 6,
-                ecmaFeatures: {
-                    jsx: true
-                }
-            }
+            code: "const jsxHtmlWithIdentifier = <input value={bar} />"
         },
         {
-            code: "<div>\n    {foo}\n    <div>\n\t\t{bar}\n\t</div>\n</div>",
-            parserOptions: {
-                ecmaFeatures: {
-                    jsx: true
-                }
-            }
+            code: "<div>\n    {foo}\n    <div>\n\t\t{bar}\n\t</div>\n</div>"
         }
     ],
 
@@ -99,12 +73,6 @@ ruleTester.run("no-string-literal", rule, {
         },
         {
             code: "const myDiv = <div>Hello there friend!</div>;",
-            parserOptions: {
-                ecmaVersion: 6,
-                ecmaFeatures: {
-                    jsx: true
-                }
-            },
             errors: [{
                 message: "Identified string literal.",
                 type: "Literal"
@@ -112,9 +80,6 @@ ruleTester.run("no-string-literal", rule, {
         },
         {
             code: "const foo = `some literal with ${bar}`;",
-            parserOptions: {
-                ecmaVersion: 6
-            },
             errors: [{
                 message: "Identified template with literal string.",
                 type: "TemplateElement"
@@ -122,12 +87,6 @@ ruleTester.run("no-string-literal", rule, {
         },
         {
             code: 'const jsxHtmlWithLitValue = <input value="bar" />;',
-            parserOptions: {
-                ecmaVersion: 6,
-                ecmaFeatures: {
-                    jsx: true
-                }
-            },
             errors: [{
                 message: "Identified string literal.",
                 type: "Literal"
@@ -135,12 +94,6 @@ ruleTester.run("no-string-literal", rule, {
         },
         {
             code: 'const jsxLi = <li value="bar" />;',
-            parserOptions: {
-                ecmaVersion: 6,
-                ecmaFeatures: {
-                    jsx: true
-                }
-            },
             errors: [{
                 message: "Identified string literal.",
                 type: "Literal"
@@ -148,11 +101,6 @@ ruleTester.run("no-string-literal", rule, {
         },
         {
             code: "<div>\n    foo\n    <div>\n\t\t{bar}\n\t</div>\n</div>",
-            parserOptions: {
-                ecmaFeatures: {
-                    jsx: true
-                }
-            },
             errors: [{
                 message: "Identified string literal.",
                 type: "Literal"
